@@ -1,0 +1,39 @@
+@import "_colors.scss";
+
+h1 {
+	text-align: center;
+}
+
+%cuadro {
+	height: 100px;
+	float:left;
+	width:15%;
+	margin:1px;
+}
+
+
+@for $i from 1 through 6 {
+	#div-#{$i}{
+		@extend %cuadro;
+	}
+}
+
+
+$div-color: (1 : $color-base,
+			 2 : lighten($color-base, 10%),
+			 3 : darken($color-base, 10%),
+			 4 : desaturate($color-base, 80%),
+			 5 : complement($color-base),	
+			 6 : invert($color-base)
+			  );
+
+@each $name, $value in $div-color{
+	#div-#{$name}{
+		background-color: $value;
+	}
+}  	
+
+
+
+
+
